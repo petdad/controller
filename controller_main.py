@@ -3,8 +3,7 @@ import time
 import logging
 import requests
 from dotenv import load_dotenv
-from data import read_data_from_file
-
+from data_collector import read_data_from_file, write_data_to_file
 
 load_dotenv()
 CLOUD_SERVER_URL = os.getenv('CLOUD_SERVER_URL')
@@ -45,6 +44,7 @@ def main():
         
         if received_data:
             logging.info(f"Processing received data: {received_data}")
+            write_data_to_file(DATA_FILE_PATH, received_data)
 
         time.sleep(INTERVAL)
 

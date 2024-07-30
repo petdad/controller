@@ -10,3 +10,9 @@ def read_data_from_file(file_path):
                 key, value = line.strip().split('=')
                 data[key] = value
     return data
+
+
+def write_data_to_file(file_path, data):
+    with open(file_path, 'w') as file:
+        for key, value in data.items():
+            file.write(f'{key}={value}\n')
